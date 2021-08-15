@@ -42,8 +42,8 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
 }).then((response) => {
     return response.json();
 }).then((myJsonb2) => {
-    //var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["sourceUrl"];
-    var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["ctrUrl"];
+    var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["sourceUrl"];
+    var ctrUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["ctrUrl"];
     //var isTokenized = myJsonb2["auth"]["cdnToken"];
 		
 
@@ -125,10 +125,17 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
   
 
 //if (isTokenized == true) {
-  src = myJson5['akamai']['0']['tokenizedUrl'];
+//  src = myJson5['akamai']['0']['tokenizedUrl'];
 //} else {
 //  src = sourceUrl;
 //}
+
+if (typeof sourceUrl !== 'undefined') {
+src = sourceUrl;
+} else {
+  src = ctrUrl;
+}
+
 const config = {
           key: "b03269cd-793c-48c6-83b4-2f080b6737db",
 
