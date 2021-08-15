@@ -101,7 +101,7 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
            "mode": "cors"
        }).then(response => response.text()).then(bodyTexts => {
 
-if (typeof sourceUrl !== 'undefined') {
+if (sourceUrl !== '') {
 sourceURL = sourceUrl;
 } else {
   sourceURL = ctrUrl;
