@@ -101,6 +101,11 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
            "mode": "cors"
        }).then(response => response.text()).then(bodyTexts => {
 
+if (typeof sourceUrl !== 'undefined') {
+sourceURL = sourceUrl;
+} else {
+  sourceURL = ctrUrl;
+}
 
            fetch("https://tokens.playmakerservices.com/", {
                 "credentials": "omit",
@@ -114,7 +119,7 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
                 },
                 "referrer": "http://stream.nbcsports.com/nbcsn/",
                 "referrerPolicy": "no-referrer-when-downgrade",
-                "body": "{\n  \"requestorId\": \"golf\",\n  \"pid\": \"" + id + "\",\n  \"application\": \"NBCSports\",\n  \"version\": \"v1\",\n  \"platform\": \"desktop\",\n  \"token\": \"" + btoa(bodyTexts) + "\",\n  \"resourceId\": \"PHJzcyB2ZXJzaW9uPSIyLjAiIHhtbG5zOm1lZGlhPSJodHRwOi8vc2VhcmNoLnlhaG9vLmNvbS9tcnNzLyI+PGNoYW5uZWw+PHRpdGxlPkNTTkNoaWNhZ288L3RpdGxlPjxpdGVtPjx0aXRsZT5EdWNrcyB2cyBCbGFja2hhd2tzIE5CQ1MgQ0hJPC90aXRsZT48Z3VpZD4yMDAxODA5PC9ndWlkPjwvaXRlbT48L2NoYW5uZWw+PC9yc3M+\",\n  \"inPath\": \"false\",\n  \"authenticationType\": \"adobe-pass\",\n  \"cdn\": \"akamai\",\n  \"url\": \"" + sourceUrl + "\"\n}",
+                "body": "{\n  \"requestorId\": \"golf\",\n  \"pid\": \"" + id + "\",\n  \"application\": \"NBCSports\",\n  \"version\": \"v1\",\n  \"platform\": \"desktop\",\n  \"token\": \"" + btoa(bodyTexts) + "\",\n  \"resourceId\": \"PHJzcyB2ZXJzaW9uPSIyLjAiIHhtbG5zOm1lZGlhPSJodHRwOi8vc2VhcmNoLnlhaG9vLmNvbS9tcnNzLyI+PGNoYW5uZWw+PHRpdGxlPkNTTkNoaWNhZ288L3RpdGxlPjxpdGVtPjx0aXRsZT5EdWNrcyB2cyBCbGFja2hhd2tzIE5CQ1MgQ0hJPC90aXRsZT48Z3VpZD4yMDAxODA5PC9ndWlkPjwvaXRlbT48L2NoYW5uZWw+PC9yc3M+\",\n  \"inPath\": \"false\",\n  \"authenticationType\": \"adobe-pass\",\n  \"cdn\": \"akamai\",\n  \"url\": \"" + sourceURL + "\"\n}",
                 "method": "POST",
                 "mode": "cors"
             }).then((response) => {
@@ -123,6 +128,7 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
 
 
   
+src = myJson5['akamai']['0']['tokenizedUrl'];
 
 //if (isTokenized == true) {
 //  src = myJson5['akamai']['0']['tokenizedUrl'];
@@ -130,11 +136,7 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
 //  src = sourceUrl;
 //}
 
-if (typeof sourceUrl !== 'undefined') {
-src = sourceUrl;
-} else {
-  src = ctrUrl;
-}
+
 
 const config = {
           key: "b03269cd-793c-48c6-83b4-2f080b6737db",
