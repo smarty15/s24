@@ -43,7 +43,7 @@ fetch("https://stream.nbcsports.com/data/live_sources_"+id+".json", {
     return response.json();
 }).then((myJsonb2) => {
     //var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["sourceUrl"];
-    var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["cbcsUrl"];
+    var sourceUrl = myJsonb2["videoSources"]["0"]["cdnSources"]["primary"][0]["ctrUrl"];
     //var isTokenized = myJsonb2["auth"]["cdnToken"];
 		
 
